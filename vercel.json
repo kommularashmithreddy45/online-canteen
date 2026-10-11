@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "public": false,
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/css/(.*)",
+      "dest": "/src/main/resources/static/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/src/main/resources/static/js/$1"
+    },
+    {
+      "src": "/student.html",
+      "dest": "/src/main/resources/static/student.html"
+    },
+    {
+      "src": "/owner.html",
+      "dest": "/src/main/resources/static/owner.html"
+    },
+    {
+      "src": "/index.html",
+      "dest": "/src/main/resources/static/index.html"
+    },
+    {
+      "src": "/",
+      "dest": "/src/main/resources/static/index.html"
+    }
+  ]
+}

@@ -1,6 +1,11 @@
-const API_BASE = window.location.origin.includes(":8080") 
-    ? `${window.location.origin}/api` 
-    : "http://localhost:8080/api";
+// If hosted on Vercel, can configure custom Render URL in localStorage.canteen_backend_url or default to current origin
+const CUSTOM_BACKEND_URL = localStorage.getItem("canteen_backend_url");
+const API_BASE = CUSTOM_BACKEND_URL 
+    ? `${CUSTOM_BACKEND_URL.replace(/\/$/, '')}/api`
+    : (window.location.origin.includes(":8080") || window.location.origin.includes("onrender.com")
+        ? `${window.location.origin}/api`
+        : "http://localhost:8080/api");
+
 
 // Fallback demo users if Spring Boot is not yet running
 const DEMO_USERS = [
