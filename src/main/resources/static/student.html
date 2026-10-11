@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Campus Canteen</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="brand-badge">
+            ⚡ Campus Canteen
+            <span class="pill">STUDENT</span>
+        </div>
+        <div class="user-tag">
+            <span id="studentGreeting">Hi Student!</span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- Top Tabs: Menu vs My Orders -->
+    <div style="background: white; display: flex; justify-content: center; gap: 20px; padding: 10px; border-bottom: 1px solid #ddd;">
+        <button id="tabMenuBtn" class="cat-chip active" onclick="switchView('menu')">🍽️ Menu Items</button>
+        <button id="tabOrdersBtn" class="cat-chip" onclick="switchView('orders')">🕒 My Orders & Live Status</button>
+    </div>
+
+    <!-- Category Filters (Visible in Menu View) -->
+    <div id="categoryBar" class="category-scroller">
+        <button class="cat-chip active" onclick="filterCategory('All')">All Items</button>
+        <button class="cat-chip" onclick="filterCategory('Snacks')">🥟 Snacks</button>
+        <button class="cat-chip" onclick="filterCategory('Beverages')">🧋 Beverages</button>
+        <button class="cat-chip" onclick="filterCategory('Meals')">🍱 Meals</button>
+    </div>
+
+    <div class="container">
+        <!-- View 1: Menu Items -->
+        <div id="menuSection">
+            <div id="menuGrid" class="menu-grid">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+
+        <!-- View 2: Live Tracking -->
+        <div id="ordersSection" style="display: none;">
+            <h3 style="margin-bottom: 16px;">Active & Past Orders</h3>
+            <div id="myOrdersList">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart Bar -->
+    <div id="cartBar" class="cart-bar" style="display: none;" onclick="openCartModal()">
+        <div>
+            <span id="cartCount" style="font-weight: 800;">0 ITEMS</span> | 
+            <span id="cartTotal" style="font-weight: 800;">₹0</span>
+        </div>
+        <button class="cart-bar-btn">View Cart ➔</button>
+    </div>
+
+    <!-- Cart Bottom Sheet Modal -->
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Your Canteen Tray 🛒</h3>
+                <button class="modal-close" onclick="closeCartModal()">✕</button>
+            </div>
+            <div id="cartItemsContainer">
+                <!-- Itemized Cart list -->
+            </div>
+            <div class="bill-total">
+                <span>Grand Total:</span>
+                <span id="modalTotal">₹0</span>
+            </div>
+            <button class="btn-primary" id="placeOrderBtn" onclick="submitOrder()">Place Order & Get Token</button>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/student.js"></script>
+</body>
+</html>

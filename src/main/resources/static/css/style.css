@@ -1,0 +1,408 @@
+:root {
+    --zepto-purple: #3c006b;
+    --zepto-purple-light: #5a1197;
+    --zepto-accent: #ff3269;
+    --zepto-green: #0c831f;
+    --zepto-green-light: #e8f5e9;
+    --bg-page: #f4f6fb;
+    --card-bg: #ffffff;
+    --text-primary: #1c1c1c;
+    --text-muted: #757575;
+    --border-color: #eaeaea;
+    --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 8px 24px rgba(60, 0, 107, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Header & Top Bar */
+.app-header {
+    background: var(--zepto-purple);
+    color: #fff;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.brand-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand-badge .pill {
+    background: var(--zepto-accent);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.user-tag {
+    font-size: 0.85rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logout-btn {
+    background: transparent;
+    border: none;
+    color: #ffd1dc;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
+
+/* Category Filter Bar */
+.category-scroller {
+    background: #fff;
+    padding: 12px 20px;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.cat-chip {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: #f0f1f5;
+    color: var(--text-primary);
+    border: 1px solid transparent;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.cat-chip.active {
+    background: var(--zepto-purple);
+    color: #fff;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 16px 100px;
+}
+
+/* Menu Grid */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.food-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.food-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.food-emoji {
+    font-size: 3rem;
+    text-align: center;
+    background: #faf7ff;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.food-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.food-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    flex-grow: 1;
+}
+
+.food-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.food-price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+/* Add Button with Counter */
+.btn-add {
+    background: #fff;
+    color: var(--zepto-green);
+    border: 1.5px solid var(--zepto-green);
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-add:hover {
+    background: var(--zepto-green-light);
+}
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--zepto-green);
+    color: white;
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.qty-control button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    width: 20px;
+}
+
+/* Floating Cart Bar */
+.cart-bar {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(92%, 600px);
+    background: var(--zepto-green);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(12, 131, 31, 0.4);
+    cursor: pointer;
+    z-index: 99;
+}
+
+.cart-bar-btn {
+    background: #fff;
+    color: var(--zepto-green);
+    border: none;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* Modal / Drawer */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 200;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px 20px 0 0;
+    padding: 24px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-close {
+    background: #f0f0f0;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bill-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.bill-total {
+    border-top: 2px dashed #ddd;
+    margin-top: 12px;
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    width: 100%;
+    background: var(--zepto-purple);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--zepto-purple-light);
+}
+
+/* Orders List & Status Badges */
+.order-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-color);
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-PENDING { background: #fff3cd; color: #856404; }
+.status-PREPARING { background: #cce5ff; color: #004085; }
+.status-READY { background: #d4edda; color: #155724; }
+.status-COMPLETED { background: #e2e3e5; color: #383d41; }
+
+/* Owner Dashboard Actions */
+.order-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-prep { background: #004085; color: #fff; }
+.btn-ready { background: #155724; color: #fff; }
+.btn-done { background: #6c757d; color: #fff; }
+
+/* Login Page Styling */
+.login-box {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 32px 24px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-hover);
+    text-align: center;
+}
+
+.login-input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.login-input:focus {
+    border-color: var(--zepto-purple);
+}
+
+.demo-credentials {
+    background: #f7f3fb;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    text-align: left;
+    color: var(--text-muted);
+}

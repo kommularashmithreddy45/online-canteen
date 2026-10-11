@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Live Dashboard | Canteen Owner</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="brand-badge">
+            🍳 Canteen Live Kitchen
+            <span class="pill" style="background:#0c831f;">LIVE DESK</span>
+        </div>
+        <div class="user-tag">
+            <span>👨‍🍳 Chef / Manager</span>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Live summary metrics -->
+        <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+            <div style="flex:1; background:#fff; padding:16px; border-radius:12px; border:1px solid #ddd; text-align:center;">
+                <div style="font-size:0.8rem; color:gray;">Active Queue</div>
+                <div id="statActive" style="font-size:1.6rem; font-weight:800; color:var(--zepto-purple);">0</div>
+            </div>
+            <div style="flex:1; background:#fff; padding:16px; border-radius:12px; border:1px solid #ddd; text-align:center;">
+                <div style="font-size:0.8rem; color:gray;">Total Orders Today</div>
+                <div id="statTotal" style="font-size:1.6rem; font-weight:800; color:var(--zepto-green);">0</div>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h3>Live Incoming Orders</h3>
+            <span style="font-size: 0.8rem; color: gray;">⚡ Auto-refreshing every 4s</span>
+        </div>
+
+        <div id="ownerOrdersContainer">
+            <!-- Injected via JavaScript -->
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/owner.js"></script>
+</body>
+</html>

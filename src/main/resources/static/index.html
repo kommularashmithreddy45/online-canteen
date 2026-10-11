@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Canteen | Zepto-Fast Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .quick-btn {
+            display: inline-block;
+            background: #ede7f6;
+            color: var(--zepto-purple);
+            border: 1px solid #d1c4e9;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 4px 2px;
+            transition: all 0.2s;
+        }
+        .quick-btn:hover {
+            background: var(--zepto-purple);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="brand-badge">
+            ⚡ Campus Canteen
+            <span class="pill">10-MIN PICKUP</span>
+        </div>
+    </header>
+
+    <div class="login-box">
+        <div style="font-size: 3rem; margin-bottom: 12px;">🍔</div>
+        <h2 style="font-weight: 800; color: var(--zepto-purple);">Order in Seconds</h2>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">
+            Log in with your College Roll Number / ID
+        </p>
+
+        <form id="loginForm">
+            <input type="text" id="collegeId" class="login-input" placeholder="College ID (e.g. 21CS101 or OWNER01)" required autofocus>
+            <input type="password" id="password" class="login-input" placeholder="PIN / Password" required>
+
+            <button type="submit" class="btn-primary" id="loginSubmitBtn">
+                Continue ➔
+            </button>
+        </form>
+
+        <div id="loginError" style="color: #d32f2f; font-size: 0.85rem; margin-top: 10px; display: none;"></div>
+
+        <div class="demo-credentials">
+            <strong>1-Click Quick Demo Login:</strong><br>
+            <button type="button" class="quick-btn" onclick="quickFill('21CS101', '1234')">👨‍🎓 Student 1 (21CS101)</button>
+            <button type="button" class="quick-btn" onclick="quickFill('21CS102', '1234')">👩‍🎓 Student 2 (21CS102)</button>
+            <button type="button" class="quick-btn" onclick="quickFill('OWNER01', 'admin123')">👨‍🍳 Canteen Owner (OWNER01)</button>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        function quickFill(id, pin) {
+            document.getElementById('collegeId').value = id;
+            document.getElementById('password').value = pin;
+            document.getElementById('loginSubmitBtn').click();
+        }
+    </script>
+</body>
+</html>
